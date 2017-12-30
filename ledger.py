@@ -20,22 +20,19 @@ file = os.path.join(file_path, file_name + "." + file_suffix)
 
 #  add line to ledger
 def add_line(coin_type, cost_each, date, total_cost, line_total_coin):
-    ledger_array = []
     line = {"coin_type": coin_type, "date": date, "cost_each": cost_each, "total_cost": total_cost,
             "line_total_coin": line_total_coin}
-    ledger_array.append(line)
-    return ledger_array
+    return line
 
 
 # save ledger to file
 def save_ledger(ledger):
-    with open(file, 'w') as f:
-        f.writelines(json.dumps(ledger))
+    ledger_save = open(file, "w+")
+    json.dump(ledger, ledger_save)
 
 
 # load ledger from saved file
 def load_ledger():
-    ledger_load_file = open(file).read()
-    ledger_array = json.loads(ledger_load_file)
+    ledger_load_file = open(file, "r")
+    ledger_array = json.load(ledger_load_file)
     return ledger_array
-
