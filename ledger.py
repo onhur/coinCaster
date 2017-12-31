@@ -36,3 +36,4 @@ def load_ledger():
     ledger_load_file = open(file, "r")
     ledger_array = json.load(ledger_load_file)
     return ledger_array
+
